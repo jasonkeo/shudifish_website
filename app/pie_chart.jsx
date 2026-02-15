@@ -6,11 +6,13 @@ import { Pie, PieChart } from 'recharts';
 // #endregion
 export default function MyPieChart({data, isAnimationActive = true }) {
   return (
-    <PieChart style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 1 }} responsive>
+    <PieChart style={{ width: '100%', maxWidth: '250px', maxHeight: '80vh', aspectRatio: 1 , marginLeft: 'auto',   // center horizontally
+    marginRight: 'auto',  // required for auto centering
+    display: 'block',}} responsive>
       <Pie
         data={data}
-        innerRadius="50%"
-        outerRadius="60%"
+        innerRadius="80%"
+        outerRadius="90%"
         // Corner radius is the rounded edge of each pie slice
         cornerRadius="0%"
         fill="#8884d8"

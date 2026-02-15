@@ -53,10 +53,18 @@ export default function Home() {
   return (
      <main className="w-full">
      
-  <div className="text-center p-4 max-w-sm mx-auto">
-     <h1 className="mt-4 text-xl font-bold"> ShouldIFish</h1>
-    <MyPieChart  data={pie(fish_percent)} />
-    <h2 className="mt-4 text-xl font-bold">Fishing Score: {fish_percent}%</h2>
+  <div className="text-center max-w-sm mx-auto">
+     <h1 className="mt-4 text-2xl font-bold"> ShouldIFish</h1>
+
+
+        <div className="relative mx-auto">
+     <MyPieChart data={pie(fish_percent)} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white font-bold">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/007/126/419/small/fish-seafood-icon-free-vector.jpg" className="w-25"></img>
+      </div>
+    </div>
+     
+    <h2 className="mt-1 text-xl font-bold">Fishing Score: {fish_percent}%</h2>
   </div>
    {/* Environmental Data */}
        <div className="mt-6 text-left bg-gray-100 p-4 rounded border border-black max-w-md mx-auto">
