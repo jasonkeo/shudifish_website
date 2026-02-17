@@ -13,17 +13,7 @@ export default function Home() {
 
   }
 
-  type EnvData = {
-  temperate: number;
-  wind_direction: number;
-  wind_speed: number;
-  cloud_cover: number;
-  kind: string;
-  pressure: number;
-  sunrise: string;
-  sunset: string;
-  moon_phase: string;
-};
+
 
   useEffect(() => {
     async function fetchData(url: string) {
@@ -63,7 +53,10 @@ export default function Home() {
      <main className="w-full">
      
   <div className="text-center max-w-sm mx-auto">
-     <h1 className="mt-4 text-2xl font-bold"> ShouldIFish</h1>
+   
+      
+      
+      <h1 className="mt-4 text-2xl font-bold text-center"> ShouldIFish</h1>
 
 
         <div className="relative mx-auto">
@@ -74,6 +67,23 @@ export default function Home() {
     </div>
      
     <h2 className="mt-1 text-xl font-bold">Fishing Score: {fish_percent}%</h2>
+    <div className="mt-2 space-y-1 text-sm">
+    <p className="text-red-600">
+      0% - 24%: Bad fishing conditions
+    </p>
+
+    <p className="text-orange-500">
+      25% - 49%: Fair fishing conditions
+    </p>
+
+    <p className="text-yellow-500">
+      50% - 74%: Good fishing conditions
+    </p>
+
+    <p className="text-green-600">
+      75% - 100%: Excellent fishing conditions
+    </p>
+  </div>
   </div>
    {/* Environmental Data */}
        <div className="mt-6 text-left bg-gray-100 p-4 rounded border border-black max-w-md mx-auto">
