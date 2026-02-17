@@ -6,10 +6,20 @@ export default function Home() {
 
   function pie(num:GLfloat) {
 
-    const other = 100 - num
+    const other = 100 - num 
+    let colour = '#FFFFFF'
+    if (num < 25) {
+      colour = '#FF0000'
+    } else if (num < 50) {
+      colour = '#c8932f'
+    } else if (num < 75) {
+      colour = '#008000'
+    } else {
+      colour = '#e330ff'
+    }
     return [
-      { name: 'Group A', value: num, fill: '#225c8e' },
-      { name: 'Group A', value: other, fill: '#FFFFFF' },];
+      { name: 'Group A', value: num, fill: colour },
+      { name: 'Group B', value: other, fill: '#FFFFFF' },];
 
   }
 
@@ -66,23 +76,12 @@ export default function Home() {
       </div>
     </div>
      
-    <h2 className="mt-1 text-xl font-bold">Fishing Score: {fish_percent}%</h2>
+    <h2 className="mt-1 text-xl font-bold {colour}">Fishing Score: {fish_percent}%</h2>
     <div className="mt-2 space-y-1 text-sm">
-    <p className="text-red-600">
-      0% - 24%: Bad fishing conditions
-    </p>
-
-    <p className="text-orange-500">
-      25% - 49%: Fair fishing conditions
-    </p>
-
-    <p className="text-yellow-500">
-      50% - 74%: Good fishing conditions
-    </p>
-
-    <p className="text-green-600">
-      75% - 100%: Excellent fishing conditions
-    </p>
+        <p className="text-[#FF0000]">0% - 24%: Bad fishing conditions</p>
+      <p className="text-[#c8932f]">25% - 49%: Fair fishing conditions</p>
+      <p className="text-[#008000]">50% - 74%: Good fishing conditions</p>
+      <p className="text-[#e330ff]">75% - 100%: Excellent fishing conditions</p>
   </div>
   </div>
    {/* Environmental Data */}
