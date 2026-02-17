@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import MyPieChart from "./pie_chart";
 export default function Home() {
   const [data, setData] = useState(null);
-  const [envData, setEnvData] = useState<EnvData | null>(null);
 
   function pie(num:GLfloat) {
 
@@ -27,27 +26,37 @@ export default function Home() {
 };
 
   useEffect(() => {
-    async function fetchData(url: string, type: number) {
+    async function fetchData(url: string) {
       try {
         const res = await fetch(url);
         const json = await res.json();
 
-        if (type === 0) {
-          setData(json);
-        } else {
-          setEnvData(json);
-        }
+
+        setData(json);
+       
       } catch (err) {
         console.error("Error fetching data:", err);
       }
     }
 
-    fetchData("https://good-fishing-kci6f5oclq-uc.a.run.app/", 0);
-    fetchData("https://get-fishing-data-kci6f5oclq-uc.a.run.app/", 1);
+    fetchData("https://get-fishing-data-kci6f5oclq-uc.a.run.app/");
   }, []);
-  if (!data || !envData) return <div className="text-center mt-8">Loading...</div>;
+  if (!data) return <div className="text-center mt-8">Loading...</div>;
 
-  const { fish_percent } = data;
+  const { 
+    fish_percent,
+    temperature,
+    wind_direction,
+    wind_speed,
+    cloud_cover,
+    kind,
+    pressure,
+    sunrise,
+    sunset,
+    moon_phase
+    } = data;
+
+
 
 
   return (
@@ -70,14 +79,14 @@ export default function Home() {
        <div className="mt-6 text-left bg-gray-100 p-4 rounded border border-black max-w-md mx-auto">
           <h3 className="text-lg font-bold mb-2">Environmental Data</h3>
           <ul className="space-y-1">
-            <li>Temperature: {envData.temperate}°C</li>
-            <li>Wind: {envData.wind_speed} km/h @ {envData.wind_direction}°</li>
-            <li>Cloud Cover: {envData.cloud_cover}%</li>
-            <li>Condition: {envData.kind}</li>
-            <li>Pressure: {envData.pressure} hPa</li>
-            <li>Sunrise: {envData.sunrise}</li>
-            <li>Sunset: {envData.sunset}</li>
-            <li>Moon Phase: {envData.moon_phase}</li>
+            <li>Temperature: {temperature}°C</li>
+            <li>Wind: {wind_speed} km/h @ {wind_direction}°</li>
+            <li>Cloud Cover: {cloud_cover}%</li>
+            <li>Condition: {kind}</li>
+            <li>Pressure: {pressure} hPa</li>
+            <li>Sunrise: {sunrise}</li>
+            <li>Sunset: {sunset}</li>
+            <li>Moon Phase: {moon_phase}</li>
           </ul>
     </div>
 </main>
